@@ -1,53 +1,71 @@
 package jsr.project.currency_converter.main;
 
-import jsr.project.currency_converter.utils.config.Configuration;
+import jsr.project.currency_converter.models.ExchangeRate;
+import jsr.project.currency_converter.models.SearchExchangeRate;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        String apiKey = Configuration.API_KEY;
-
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Ingresa tu moneda actual (por ejemplo, USD)");
+            System.out.println("Ingresa tu moneda actual (por ejemplo, MXN)");
             String currentCurrencyCode = scanner.nextLine().toUpperCase();
 
             if (currencyCodeIsValid(currentCurrencyCode)) {
-                System.out.println("Ingresa la moneda deseada (por ejemplo, MXN):");
-                String desiredCurrencyConvert = scanner.nextLine().toUpperCase();
 
-                if (currencyCodeIsValid(desiredCurrencyConvert)) {
+                do {
+                    SearchExchangeRate searchExchangeRate = new SearchExchangeRate();
+                    ExchangeRate currentExchangeRate = searchExchangeRate
+                            .searchCurrentExchangeRate(currentCurrencyCode);
+                    System.out.println("ExchangeRate ==> " + currentExchangeRate);
 
-                    double amountOfMoney = 0;
-
-                    do {
-                        System.out.println("Ingresa la cantidad de " + currentCurrencyCode + " a convertir:");
-
-                        // Verificar si el siguiente token es un double
-                        if (scanner.hasNextDouble()) {
-                            amountOfMoney = scanner.nextDouble();
-
-                            // Consumir el salto de línea pendiente
-                            scanner.nextLine();
-
-                            break; // Salir del bucle si se ingresa un double válido
-                        } else {
-                            System.out.println("Entrada inválida. Por favor, ingresa una cantidad válida.");
-                            scanner.nextLine(); // Limpiar la entrada del scanner
-                        }
-                    } while (true); // Continuar hasta que se ingrese un double válido
-
-                    String uri = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + currentCurrencyCode;
-
-                    System.out.println();
-                    System.out.println("Ingresa una S para continuar ó una N para terminar");
-                    String exit = scanner.nextLine();
-                    if (exit.equalsIgnoreCase("N")) {
+                    if (currentExchangeRate.result().equalsIgnoreCase("error")) {
+                        System.out.println("Error en la moneda actual, intenta de nuevo");
                         break;
+                    } else {
+                        System.out.println("Ingresa la moneda deseada (por ejemplo, USD):");
+                        String desiredCurrencyConvert = scanner.nextLine().toUpperCase();
+
+                        if (currencyCodeIsValid(desiredCurrencyConvert)) {
+
+                            do {
+
+                                if (!currentExchangeRate.conversion_rates().containsKey(desiredCurrencyConvert)) {
+                                    System.out.println("No encontre un valor para " + desiredCurrencyConvert + " intenta de nuevo");
+                                    break;
+                                }
+
+                                double amountOfMoney = 0;
+
+                                System.out.println("Ingresa la cantidad de " + currentCurrencyCode + " a convertir en " + desiredCurrencyConvert + ":");
+
+                                if (scanner.hasNextDouble()) {
+                                    amountOfMoney = scanner.nextDouble();
+
+                                    // Consumir el salto de línea pendiente
+                                    scanner.nextLine();
+
+                                    break; // Salir del bucle si se ingresa un double válido
+                                } else {
+                                    System.out.println("Entrada inválida. Por favor, ingresa una cantidad válida.");
+                                    scanner.nextLine(); // Limpiar la entrada del scanner
+                                }
+
+
+
+                            } while (true);
+                            break;
+                        }
                     }
+                } while (true);
+                System.out.println();
+                System.out.println("Ingresa una S para continuar ó una N para terminar");
+                String exit = scanner.nextLine();
+                if (exit.equalsIgnoreCase("N")) {
+                    break;
                 }
             }
         }
