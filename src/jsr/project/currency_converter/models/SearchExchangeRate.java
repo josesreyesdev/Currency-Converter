@@ -31,7 +31,6 @@ public class SearchExchangeRate {
             // JSON convert to ExchangeRate
             return new Gson().fromJson(json, ExchangeRate.class);
         } catch (Exception e) {
-            System.out.println("No encontre la ");
             throw new RuntimeException(e);
         }
     }
