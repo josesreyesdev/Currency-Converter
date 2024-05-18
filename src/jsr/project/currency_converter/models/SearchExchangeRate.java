@@ -26,7 +26,7 @@ public class SearchExchangeRate {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             String json = response.body();
-            System.out.println("Response => " + json);
+            //System.out.println("Response => " + json);
 
             // JSON convert to ExchangeRate
             return new Gson().fromJson(json, ExchangeRate.class);

@@ -12,14 +12,14 @@ public class Main {
 
         while (true) {
             // código de moneda actual
-            String currentCurrencyCode = promptForCurrencyCode(scanner, "Ingresa tu moneda actual (por ejemplo, MXN)");
+            String currentCurrencyCode = promptForCurrencyCode(scanner, "Ingresa el código de tu moneda actual (por ejemplo, MXN)");
 
             if (currencyCodeIsValid(currentCurrencyCode)) {
 
                 ExchangeRate currentExchangeRate = getCurrentExchangeRate(currentCurrencyCode);
 
                 if (currentExchangeRate.result().equalsIgnoreCase("error")) {
-                    System.out.println("Error en la moneda actual, intenta de nuevo");
+                    System.out.println("Error en el código de la moneda actual, intenta de nuevo");
                     continue;
                 }
 
@@ -30,7 +30,7 @@ public class Main {
                 convertedAmount(conversionInput, currentExchangeRate);
 
                 System.out.println();
-                System.out.println("Si no desea continuar ingrese N, de lo contrario ingrese cualquier otra letra  ");
+                System.out.println("Si NO deseas continuar con nueva conversion ingrese N, de lo contrario ingrese cualquier otra letra  ");
                 String exit = scanner.nextLine();
                 if (exit.equalsIgnoreCase("N")) {
                     break;
@@ -43,21 +43,25 @@ public class Main {
     // Conversor de monto
     private static void convertedAmount(ConversionInput conversionInput, ExchangeRate currentExchangeRate) {
 
-        var desiredCurrency = conversionInput.desiredCurrency();
+        var currentCurrencyCode = currentExchangeRate.base_code();
 
-        double convertedAmount = conversionInput.amount() *
-                currentExchangeRate.conversion_rates().get(desiredCurrency);
+        var desiredCurrency = conversionInput.desiredCurrency();
+        var amount = conversionInput.amount();
+
+        double convertedAmount = amount * currentExchangeRate.conversion_rates().get(desiredCurrency);
 
         double roundedAmount = Math.round(convertedAmount * 100.0) / 100.0;
 
-        System.out.println("La cantidad en " + desiredCurrency + " son: " + roundedAmount);
+        System.out.println();
+        System.out.println("El valor de " + amount + "[" + currentCurrencyCode + "]" +
+                " corresponse al valor final de: " + roundedAmount + " [" + desiredCurrency + "]");
     }
 
     // Solicitar entrada para convercion
     private static ConversionInput promptForConversionInput(Scanner scanner, ExchangeRate exchangeRate) {
         do {
             // moneda deseada a convertir
-            String desiredCurrencyConvert = promptForCurrencyCode(scanner, "Ingresa la moneda deseada (por ejemplo, USD)");
+            String desiredCurrencyConvert = promptForCurrencyCode(scanner, "Ingresa el código de la moneda deseada (por ejemplo, USD)");
 
             if (currencyCodeIsValid(desiredCurrencyConvert) &&
                     exchangeRate.conversion_rates().containsKey(desiredCurrencyConvert)) {
@@ -67,7 +71,7 @@ public class Main {
 
                 return new ConversionInput(desiredCurrencyConvert, amountOfMoney);
             } else {
-                System.out.println("Error en la moneda deseada, intenta de nuevo!");
+                System.out.println("Error en el código de la moneda deseada, intenta de nuevo!");
             }
         } while (true);
     }
