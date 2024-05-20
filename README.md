@@ -43,9 +43,7 @@ java Main
 ```
 2. Sigue las instrucciones en pantalla para ingresar el código de tu moneda actual, la moneda deseada y la cantidad a convertir.
 
-* **NOTA:** `Utilizar el Código de Moneda de cada país al hacer la consulta, ya sea para dar moneda actual y para la moneda a consultar, ejemplo:` **MXN** para el Peso mexicano,  **USD** para el Dólar Estadounidense `ó como en la siguiente imagen.`
-
-![currency_code](https://github.com/josesreyesdev/Currency-Converter/assets/37203999/a9daecd3-3682-41bf-943d-3db8d288179c)
+* **NOTA:** `Utilizar el Código de Moneda de cada país al hacer la consulta, ya sea para dar moneda actual y para la moneda a consultar, ejemplo:` **MXN** para el Peso mexicano,  **USD** para el Dólar Estadounidense `ó como en la siguiente imagen.` Aqui puedes ver todas las [monedas admitidas](https://www.exchangerate-api.com/docs/supported-currencies)
 
 * Ingresa tu moneda actual:
 
