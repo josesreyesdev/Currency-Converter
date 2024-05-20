@@ -45,26 +45,26 @@ java Main
 
 * **NOTA:** `Utilizar el Código de Moneda de cada país al hacer la consulta, ya sea para dar moneda actual y para la moneda a consultar, ejemplo:` **MXN** para el Peso mexicano,  **USD** para el Dólar Estadounidense `ó como en la siguiente imagen.`
 
-![currency_code.JPG](..%2F..%2F..%2FAlura%2Fcurrency_code.JPG)
+![currency_code](https://github.com/josesreyesdev/Currency-Converter/assets/37203999/a9daecd3-3682-41bf-943d-3db8d288179c)
 
 * Ingresa tu moneda actual:
 
-![current_currency_code.JPG](..%2F..%2F..%2FAlura%2Fcurrent_currency_code.JPG)
+![current_currency_code](https://github.com/josesreyesdev/Currency-Converter/assets/37203999/90125528-af6d-4990-9f9b-680638433482)
 
 * Ingresa tu moneda deseada
-
-![desired_currency_code.JPG](..%2F..%2F..%2FAlura%2Fdesired_currency_code.JPG)
+  
+![desired_currency_code](https://github.com/josesreyesdev/Currency-Converter/assets/37203999/e1b36783-d3d7-481a-9cb0-ad972aca262f)
 
 * Ingresa la cantidad de dinero a convertir
 
-![quantity_to_covert.JPG](..%2F..%2F..%2FAlura%2Fquantity_to_covert.JPG)
+![quantity_to_convert](https://github.com/josesreyesdev/Currency-Converter/assets/37203999/41ee69e4-8bda-4423-b7d8-cd078bb0fc18)
 
 * La aplicación mostrará el resultado de la conversión:
 
-![converted_result.JPG](..%2F..%2F..%2FAlura%2Fconverted_result.JPG)
+![converted_result](https://github.com/josesreyesdev/Currency-Converter/assets/37203999/fd2c0095-4805-44ad-93d1-973bb483253e)
 
 * Posteriormente, puedes inresar **n** si **NO** deseas continuar con la ejecución, 
 de lo contrario puedes escribrir cualquier otro caracter para hacer otra consulta y se repite
 cada punto del inciso 2.
 
-![finalization.JPG](..%2F..%2F..%2FAlura%2Ffinalization.JPG)
+![finally](https://github.com/josesreyesdev/Currency-Converter/assets/37203999/3cda9643-14b3-4717-ad5d-5acf9097e1d4)
