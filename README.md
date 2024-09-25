@@ -61,8 +61,8 @@ java Main
 
 ![converted_result](https://github.com/josesreyesdev/Currency-Converter/assets/37203999/fd2c0095-4805-44ad-93d1-973bb483253e)
 
-* Posteriormente, puedes inresar **n** si **NO** deseas continuar con la ejecución, 
+* Posteriormente, puedes ingresar **n** si **NO** deseas continuar con la ejecución, 
 de lo contrario puedes escribrir cualquier otro caracter para hacer otra consulta y se repite
-cada punto del inciso 2.
+cada punto desde el paso 2.
 
 ![finally](https://github.com/josesreyesdev/Currency-Converter/assets/37203999/3cda9643-14b3-4717-ad5d-5acf9097e1d4)
